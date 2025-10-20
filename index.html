@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For My Love</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="They Long to Be Close to You - Instrumental Cover.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+    <h1>To My Lovely,</h1>
+    <p class="message">
+        These two years have been full of happiness for me. 
+        Even though we sometimes argue or have problems, 
+        they helped us grow. I’m really thankful for everything 
+        you’ve done for being a good lover, 
+        for giving me support, and for always being by my side.
+    
+        This year we didn’t get to see each other much, 
+        but my love for you never changed. 
+        I’m sorry if I was moody or acted like a baby sometimes (I’ll try not to anymore). 
+        And I have a special gift for you! 💖
+    </p>
+    <button onclick="location.href='gift.html'" class="next-btn">Next </button>
+  </div>
+
+  <div class="hearts"></div>
+
+  <script>
+    const heartsContainer = document.querySelector('.hearts');
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
