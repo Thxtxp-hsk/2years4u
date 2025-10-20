@@ -1,45 +1,241 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- สำหรับมือถือ -->
   <title>For My Love</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Kanit', sans-serif; /* ฟอนต์ภาษาไทย */
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 10vh 5vw;  /* ปรับให้ยืดหยุ่นมือถือ */
+      box-sizing: border-box;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .next-btn {
+      background-color: #ff4081;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 20px;
+      font-family: 'Kanit', sans-serif; /* ฟอนต์ภาษาไทย */
+    }
+
+    .note {
+      display: inline-block;                
+      background: #ffffff;                  
+      padding: 15px 20px;                   
+      border-radius: 10px;                  
+      text-align: left;                     
+      max-width: 90%;                     
+      color: #ff4081;                        
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      font-family: 'Kanit', sans-serif;
+      line-height: 1.5;
+    }
+
+    /* Gift Grid */
+    .gift-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      grid-gap: 15px;
+      justify-items: center;
+      margin: 30px auto;
+    }
+
+    .gift-inner {
+      width: 120px;
+      height: 120px;
+      perspective: 1000px;
+      transition: transform 1s;
+      transform-style: preserve-3d;
+      transform-origin: center center;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gift-inner.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .gift-front, .gift-back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .gift-front {
+      transform: rotateY(180deg);
+    }
+
+    /* Floating hearts */
+    .hearts {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart, .mini-heart {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: red;
+      clip-path: polygon(
+        50% 100%, 0% 25%, 20% 10%, 50% 25%, 80% 10%, 100% 30%
+      );
+      pointer-events: none;
+      opacity: 1;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0) rotate(0); opacity: 1; }
+      to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-  <audio autoplay loop>
+
+  <audio id="bgMusic" autoplay loop muted>
     <source src="They Long to Be Close to You - Instrumental Cover.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="container">
-    <h1>To My Lovely,</h1>
-    <p class="message">
-        These two years have been full of happiness for me. 
-        Even though we sometimes argue or have problems, 
-        they helped us grow. I’m really thankful for everything 
-        you’ve done for being a good lover, 
-        for giving me support, and for always being by my side.
-    
-        This year we didn’t get to see each other much, 
-        but my love for you never changed. 
-        I’m sorry if I was moody or acted like a baby sometimes (I’ll try not to anymore). 
-        And I have a special gift for you! 💖
-    </p>
-    <button onclick="location.href='gift.html'" class="next-btn">Next </button>
-  </div>
+  <!-- หน้า 1 -->
+  <section id="page1" class="page">
+    <h1>Happy 2 Years 💖</h1>
+    <button id="toPage2" class="next-btn">Read my note</button>
+    <div class="hearts"></div>
+  </section>
 
-  <div class="hearts"></div>
+  <!-- หน้า 2: Note -->
+  <section id="page2" class="page hidden">
+    <h1>My feelings 💌</h1>
+    <div class="note">
+      Dear Mybooboo<br>
+      เป็นสองปีที่เค้ามีความสุขมาก ๆ เลย ถึงเราจะทะเลาะกัน มีปัญหาให้ทุกข์ใจบ้าง
+      แต่มันก็ทำให้เราโตขึ้น เค้าขอบคุณทุก ๆ อย่างที่เธอทำให้
+      ไม่ว่าจะเป็นคนรักที่ดี เป็นกำลังใจที่ดี เป็นคนที่ทำให้เค้ายิ้มได้ในทุก ๆ วัน
+      เป็นคนที่อยู่ข้างเค้าเสมอ เค้าขอบคุณจริง ๆ นะ <br>
+      แต่ปีนี้ก็เป็นปีที่เราไม่ได้เจอกันบ่อยเท่าไหร่ แต่ความรักที่เค้ามีให้เธอก็ไม่ได้ลดลงเลยนะ 
+      และเค้าก็ขอโทษที่บางครั้งอาจจะงอแงกับเธอไปหน่อย ทำตัวไม่น่ารักบ้าง แต่ก็รักนะจุ้บ ๆ<br> 
+      และสุดท้ายนี้เค้าก็มีของขวัญสุดพิเศษให้เธอด้วยล่ะ กดเลือกได้เลยคับ
+    </div>
+    <br>
+    <button id="toPage3" class="next-btn">Choose your gift</button>
+  </section>
+
+  <!-- หน้า 3: Gift -->
+  <section id="page3" class="page hidden">
+    <h1>Choose your gift 💞</h1>
+    <div class="gift-grid">
+      <div class="gift-inner gift-option">
+        <img src="1cat.jpg" class="gift-back">
+        <img src="PANDORA-SilverOpenworkheartsilverring-MKP1205123-1.jpg" class="gift-front">
+      </div>
+      <div class="gift-inner gift-option">
+        <img src="cat2.jpg" class="gift-back">
+        <img src="PANDORA-SilverOpenworkheartsilverring-MKP1205123-1.jpg" class="gift-front">
+      </div>
+      <div class="gift-inner gift-option">
+        <img src="cat3.jpg" class="gift-back">
+        <img src="PANDORA-SilverOpenworkheartsilverring-MKP1205123-1.jpg" class="gift-front">
+      </div>
+      <div class="gift-inner gift-option">
+        <img src="cat4.jpg" class="gift-back">
+        <img src="PANDORA-SilverOpenworkheartsilverring-MKP1205123-1.jpg" class="gift-front">
+      </div>
+    </div>
+    <p id="giftText">Click a gift to reveal your surprise 💫</p>
+  </section>
 
   <script>
+    window.addEventListener('load', () => {
+      const music = document.getElementById('bgMusic');
+      music.muted = false;
+      music.play().catch(() => console.log("Autoplay blocked"));
+    });
+
+    // Floating hearts
     const heartsContainer = document.querySelector('.hearts');
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+      heart.style.animationDuration = (3 + Math.random()*2) + 's';
       heartsContainer.appendChild(heart);
       setTimeout(() => heart.remove(), 5000);
     }
     setInterval(createHeart, 300);
+
+    // Navigation pages
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+    const page3 = document.getElementById('page3');
+
+    document.getElementById('toPage2').addEventListener('click', () => {
+      page1.classList.add('hidden');
+      page2.classList.remove('hidden');
+    });
+    document.getElementById('toPage3').addEventListener('click', () => {
+      page2.classList.add('hidden');
+      page3.classList.remove('hidden');
+    });
+
+    // Gift click flip + mini hearts
+    const giftOptions = document.querySelectorAll('.gift-option');
+    const giftText = document.getElementById('giftText');
+
+    giftOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        option.classList.toggle('flipped');
+        giftText.textContent = "Happy 2 years together 💕";
+
+        for(let i=0;i<10;i++){
+          const heart = document.createElement('div');
+          heart.classList.add('mini-heart');
+          document.body.appendChild(heart);
+
+          const rect = giftText.getBoundingClientRect();
+          heart.style.left = rect.left + rect.width/2 + (Math.random()*40-20) + "px";
+          heart.style.top = rect.top + "px";
+
+          const duration = 2000 + Math.random()*1000;
+          heart.style.transition = `all ${duration}ms ease-out`;
+          setTimeout(()=> {
+            heart.style.transform = `translateY(-100px) translateX(${Math.random()*60-30}px) scale(0.5)`;
+            heart.style.opacity = 0;
+          }, 50);
+
+          setTimeout(()=> heart.remove(), duration);
+        }
+      });
+    });
   </script>
 </body>
 </html>
