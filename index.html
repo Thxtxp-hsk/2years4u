@@ -107,13 +107,24 @@
     .heart {
       position: absolute;
       width: 15px;
-      height: 15px;
-      background: red;
-      pointer-events: none;
-      opacity: 1;
-      z-index: 100;
-      background: red;
-      clip-path: polygon("M8 2C8 0.9 7.1 0 6 0C4.9 0 4 0.9 4 2C4 3.1 5.5 4.7 8 7.1C10.5 4.7 12 3.1 12 2C12 0.9 11.1 0 10 0C8.9 0 8 0.9 8 2Z");
+  height: 15px;
+  background: red;
+  pointer-events: none;
+  opacity: 1;
+  z-index: 100;
+  /* ใช้ polygon สร้างหัวใจแบบโค้งนิดๆ */
+  clip-path: polygon(
+    50% 10%,
+    65% 0%,
+    80% 5%,
+    90% 20%,
+    85% 35%,
+    50% 75%,
+    15% 35%,
+    10% 20%,
+    20% 5%,
+    35% 0%
+  );
       animation: float 4s linear infinite;
     }
 
@@ -256,6 +267,7 @@
   </script>
 </body>
 </html>
+
 
 
 
