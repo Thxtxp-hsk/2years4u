@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- สำหรับมือถือ -->
-  <title>For My Love</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Kanit', sans-serif; /* ฟอนต์ภาษาไทย */
+      font-family: 'Sarabun', sans-serif;
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       color: white;
       text-align: center;
@@ -19,7 +19,7 @@
     .page {
       width: 100%;
       min-height: 100vh;
-      padding: 10vh 5vw;  /* ปรับให้ยืดหยุ่นมือถือ */
+      padding: 50px 20px;
       box-sizing: border-box;
     }
 
@@ -31,46 +31,48 @@
       background-color: #ff4081;
       border: none;
       color: white;
-      font-size: 1.2rem;
-      padding: 10px 20px;
+      font-size: 1.3rem;
+      padding: 12px 25px;
       border-radius: 30px;
       cursor: pointer;
       margin-top: 20px;
-      font-family: 'Kanit', sans-serif; /* ฟอนต์ภาษาไทย */
+      font-family: 'Sarabun', sans-serif;
     }
 
+    /* กระดาษจดโน้ต */
     .note {
-      display: inline-block;                
-      background: #ffffff;                  
-      padding: 15px 20px;                   
-      border-radius: 10px;                  
-      text-align: left;                     
-      max-width: 90%;                     
-      color: #ff4081;                        
-      font-size: 1rem;
+      display: inline-block;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      text-align: left;
+      max-width: 600px;
+      color: #ff4081;
+      font-size: 1.2rem;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      font-family: 'Kanit', sans-serif;
-      line-height: 1.5;
+      font-family: 'Sarabun', sans-serif;
+      line-height: 1.8;
     }
 
-    /* Gift Grid */
+    /* หน้า 3 ของขวัญ */
     .gift-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      grid-gap: 15px;
-      justify-items: center;
+      grid-template-columns: repeat(2, 130px);
+      grid-gap: 20px;
+      justify-content: center;
       margin: 30px auto;
     }
 
     .gift-inner {
-      width: 120px;
-      height: 120px;
+      width: 130px;
+      height: 130px;
       perspective: 1000px;
       transition: transform 1s;
       transform-style: preserve-3d;
       transform-origin: center center;
       position: relative;
       cursor: pointer;
+      margin: 0 auto;
     }
 
     .gift-inner.flipped {
@@ -102,34 +104,46 @@
       z-index: -1;
     }
 
-    .heart, .mini-heart {
+    .heart {
       position: absolute;
+      bottom: 0;
       width: 15px;
       height: 15px;
       background: red;
-      clip-path: polygon(
-        50% 100%, 0% 25%, 20% 10%, 50% 25%, 80% 10%, 100% 30%
-      );
-      pointer-events: none;
-      opacity: 1;
+      clip-path: polygon(50% 100%, 0% 25%, 20% 10%, 50% 25%, 80% 10%, 100% 30%);
+      animation: float 4s linear infinite;
     }
 
     @keyframes float {
       from { transform: translateY(0) rotate(0); opacity: 1; }
       to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
     }
+
+    .mini-heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      clip-path: polygon(50% 100%, 0% 25%, 20% 10%, 50% 25%, 80% 10%, 100% 30%);
+      pointer-events: none;
+      opacity: 1;
+      z-index: 100;
+    }
   </style>
 </head>
 <body>
 
-  <audio id="bgMusic" autoplay loop muted>
+  <!-- 🎵 ปุ่มเปิดเพลง -->
+  <audio id="bgMusic" loop>
     <source src="They Long to Be Close to You - Instrumental Cover.mp3" type="audio/mpeg">
   </audio>
+  <button id="startMusic" class="next-btn">🎵 Start Music</button>
 
   <!-- หน้า 1 -->
   <section id="page1" class="page">
-    <h1>Happy 2 years Together💖</h1>
-    <button id="toPage2" class="next-btn">Read my note</button>
+    <h1>Happy 2 Years 💖</h1>
+    <p>ขอบคุณที่อยู่ด้วยกันมาตลอด 2 ปีนะครับ<br>มีของขวัญเล็ก ๆ ให้ด้วย 💞</p>
+    <button id="toPage2" class="next-btn">อ่านโน้ตของเค้า</button>
     <div class="hearts"></div>
   </section>
 
@@ -137,17 +151,17 @@
   <section id="page2" class="page hidden">
     <h1>My feelings 💌</h1>
     <div class="note">
-      Dear Mybooboo<br>
+      ถึง Mybooboo,<br><br>
       เป็นสองปีที่เค้ามีความสุขมาก ๆ เลย ถึงเราจะทะเลาะกัน มีปัญหาให้ทุกข์ใจบ้าง
       แต่มันก็ทำให้เราโตขึ้น เค้าขอบคุณทุก ๆ อย่างที่เธอทำให้
       ไม่ว่าจะเป็นคนรักที่ดี เป็นกำลังใจที่ดี เป็นคนที่ทำให้เค้ายิ้มได้ในทุก ๆ วัน
-      เป็นคนที่อยู่ข้างเค้าเสมอ เค้าขอบคุณจริง ๆ นะ <br>
-      แต่ปีนี้ก็เป็นปีที่เราไม่ได้เจอกันบ่อยเท่าไหร่ แต่ความรักที่เค้ามีให้เธอก็ไม่ได้ลดลงเลยนะ 
-      และเค้าก็ขอโทษที่บางครั้งอาจจะงอแงกับเธอไปหน่อย ทำตัวไม่น่ารักบ้าง แต่ก็รักนะจุ้บ ๆ<br> 
-      และสุดท้ายนี้เค้าก็มีของขวัญสุดพิเศษให้เธอด้วยล่ะ กดเลือกได้เลยคับ
+      เป็นคนที่อยู่ข้างเค้าเสมอ เค้าขอบคุณจริง ๆ นะ ❤️<br><br>
+      ปีนี้เราอาจไม่ได้เจอกันบ่อยเท่าไหร่ แต่ความรักที่เค้ามีให้เธอไม่ได้ลดลงเลยนะ 
+      และขอโทษถ้าบางครั้งเค้างอแงหรือไม่น่ารัก แต่ก็รักเธอเสมอ 💕<br><br>
+      เค้ามีของขวัญสุดพิเศษให้ด้วยนะ ลองเลือกดูสิ 🎁
     </div>
     <br>
-    <button id="toPage3" class="next-btn">Choose your gift</button>
+    <button id="toPage3" class="next-btn">เลือกของขวัญเลย!</button>
   </section>
 
   <!-- หน้า 3: Gift -->
@@ -156,32 +170,35 @@
     <div class="gift-grid">
       <div class="gift-inner gift-option">
         <img src="1cat.jpg" class="gift-back">
-        <img src="PANDORA-SilverOpenworkheartsilverring-MKP1205123-1.jpg" class="gift-front">
+        <img src="gift.jpg" class="gift-front">
       </div>
       <div class="gift-inner gift-option">
         <img src="cat2.jpg" class="gift-back">
-        <img src="PANDORA-SilverOpenworkheartsilverring-MKP1205123-1.jpg" class="gift-front">
+        <img src="gift.jpg" class="gift-front">
       </div>
       <div class="gift-inner gift-option">
         <img src="cat3.jpg" class="gift-back">
-        <img src="PANDORA-SilverOpenworkheartsilverring-MKP1205123-1.jpg" class="gift-front">
+        <img src="gift.jpg" class="gift-front">
       </div>
       <div class="gift-inner gift-option">
         <img src="cat4.jpg" class="gift-back">
-        <img src="PANDORA-SilverOpenworkheartsilverring-MKP1205123-1.jpg" class="gift-front">
+        <img src="gift.jpg" class="gift-front">
       </div>
     </div>
-    <p id="giftText">Click a gift to reveal your surprise 💫</p>
+    <p id="giftText">แตะรูปเพื่อเปิดของขวัญ 💫</p>
   </section>
 
   <script>
-    window.addEventListener('load', () => {
-      const music = document.getElementById('bgMusic');
-      music.muted = false;
-      music.play().catch(() => console.log("Autoplay blocked"));
+    // 🎵 เริ่มเพลงหลังจากแตะปุ่ม
+    const music = document.getElementById("bgMusic");
+    const startBtn = document.getElementById("startMusic");
+
+    startBtn.addEventListener("click", () => {
+      music.play();
+      startBtn.style.display = "none"; // ซ่อนปุ่มหลังจากเริ่มเพลง
     });
 
-    // Floating hearts
+    // Floating hearts หน้าแรก
     const heartsContainer = document.querySelector('.hearts');
     function createHeart() {
       const heart = document.createElement('div');
@@ -193,11 +210,10 @@
     }
     setInterval(createHeart, 300);
 
-    // Navigation pages
+    // การเปลี่ยนหน้า
     const page1 = document.getElementById('page1');
     const page2 = document.getElementById('page2');
     const page3 = document.getElementById('page3');
-
     document.getElementById('toPage2').addEventListener('click', () => {
       page1.classList.add('hidden');
       page2.classList.remove('hidden');
@@ -207,31 +223,28 @@
       page3.classList.remove('hidden');
     });
 
-    // Gift click flip + mini hearts
+    // Flip ของขวัญ
     const giftOptions = document.querySelectorAll('.gift-option');
     const giftText = document.getElementById('giftText');
-
     giftOptions.forEach(option => {
       option.addEventListener('click', () => {
         option.classList.toggle('flipped');
-        giftText.textContent = "Happy 2 years together 💕";
+        giftText.textContent = "Happy 2 Years Together 💕";
 
+        // mini hearts
         for(let i=0;i<10;i++){
           const heart = document.createElement('div');
           heart.classList.add('mini-heart');
           document.body.appendChild(heart);
-
           const rect = giftText.getBoundingClientRect();
           heart.style.left = rect.left + rect.width/2 + (Math.random()*40-20) + "px";
           heart.style.top = rect.top + "px";
-
           const duration = 2000 + Math.random()*1000;
           heart.style.transition = `all ${duration}ms ease-out`;
           setTimeout(()=> {
             heart.style.transform = `translateY(-100px) translateX(${Math.random()*60-30}px) scale(0.5)`;
             heart.style.opacity = 0;
           }, 50);
-
           setTimeout(()=> heart.remove(), duration);
         }
       });
@@ -239,4 +252,3 @@
   </script>
 </body>
 </html>
-
