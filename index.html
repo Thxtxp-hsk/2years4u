@@ -146,11 +146,29 @@
       width: 20px;
       height: 20px;
       background: red;
-      clip-path: polygon(50% 100%, 0% 25%, 20% 10%, 50% 25%, 80% 10%, 100% 30%);
       pointer-events: none;
       opacity: 1;
       z-index: 100;
     }
+
+   .mini-heart::before,
+   .mini-heart:;after{
+     content: "";
+     position: absolute;
+     width: 20px;
+     height: 20px;
+     background: red;
+     border-radius: 50%;
+   }
+
+   .mini-heart::before{
+     top: -7px;
+     left: 0;
+   }
+   .mini-heart::after{
+     left: -7px;
+     top: 0;
+   }
   </style>
 </head>
 <body>
@@ -274,6 +292,7 @@
   </script>
 </body>
 </html>
+
 
 
 
