@@ -140,34 +140,7 @@
       from { transform: translateY(0) rotate(0); opacity: 1; }
       to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
     }
-/*''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''*/
-    .mini-heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      pointer-events: none;
-      z-index: 100;
-    }
 
-   .mini-heart::before,
-   .mini-heart::after{
-     content: "";
-     position: absolute;
-     width: 24px;
-     height: 24px;
-     background: red;
-     border-radius: 50%;
-   }
-
-   .mini-heart::before{
-     top: -7px;
-     left: 0;
-   }
-   .mini-heart::after{
-     left: -7px;
-     top: 0;
-   }
   </style>
 </head>
 <body>
@@ -290,4 +263,5 @@
   </script>
 </body>
 </html>
+
 
