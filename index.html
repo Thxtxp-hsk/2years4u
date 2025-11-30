@@ -115,7 +115,24 @@
       /*clip-path: polygon(50% 100%, 0% 25%, 20% 10%, 50% 25%, 80% 10%, 100% 30%);*/
       animation: float 4s linear infinite;
     }
+     .heart::before,
+     .heart::after{
+       content: '';
+       position: absolute;
+       width: 200px;
+       height: 200px;
+       background-color: red;
+       border-radius: 50%;
+     }
+     .heart::before{
+       top: -100px;
+       left: 0;
+     }
 
+   .heart::after{
+     top: 0;
+    left: 100px;
+   }
     @keyframes float {
       from { transform: translateY(0) rotate(0); opacity: 1; }
       to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
@@ -254,6 +271,7 @@
   </script>
 </body>
 </html>
+
 
 
 
