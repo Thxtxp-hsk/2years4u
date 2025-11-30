@@ -114,23 +114,25 @@
       transform: rotate(45deg);
       margin: 50px;
       animation: float 4s linear infinite;
+      opacity: 0.85;
+      filter: blur(0.3px);
     }
 
    .heart::before,
    .heart::after{
      content: "";
-     width: 20px;
-     height: 20px;
+     width: 26px;
+     height: 26px;
      background: red;
      border-radius: 50%;
      position: absolute;
    }
    .heart::before{
-     top: -10px;
+     top: -13px;
      top: 0;
    }
     .heart::after{
-     top: -10px;
+     top: -13px;
      top: 0;
    }
     @keyframes float {
@@ -271,6 +273,7 @@
   </script>
 </body>
 </html>
+
 
 
 
