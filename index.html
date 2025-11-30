@@ -277,7 +277,7 @@
           const rect = giftText.getBoundingClientRect();
           heart.style.left = rect.left + rect.width/2 + (Math.random()*40-20) + "px";
           heart.style.top = rect.top + "px";
-          const duration = 500 + Math.random()*1000;
+          const duration = 2000 + Math.random()*1000;
           heart.style.transition = `all ${duration}ms ease-out`;
           setTimeout(()=> {
             heart.style.transform = `translateY(-100px) translateX(${Math.random()*60-30}px) scale(0.5)`;
@@ -290,3 +290,4 @@
   </script>
 </body>
 </html>
+
