@@ -111,12 +111,28 @@
       width: 20px;
       height: 20px;
       background: red;
-      transform: rotate(-45deg);
+      transform: rotate(45deg);
       margin: 50px;
-      clip-path: polygon(50% 100%, 0% 25%, 20% 10%, 50% 25%, 80% 10%, 100% 30%);
       animation: float 4s linear infinite;
     }
-   
+
+   .heart::before,
+   .heart::after{
+     content: "";
+     width: 20px;
+     height: 20px;
+     background: red;
+     border-radius: 50%;
+     position: absolute;
+   }
+   .heart::before{
+     top: -10px;
+     top: 0;
+   }
+    .heart::after{
+     top: -10px;
+     top: 0;
+   }
     @keyframes float {
       from { transform: translateY(0) rotate(0); opacity: 1; }
       to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
@@ -255,6 +271,7 @@
   </script>
 </body>
 </html>
+
 
 
 
