@@ -121,10 +121,11 @@
    .heart::before,
    .heart::after{
      content: "";
+     position: absolute;
      width: 20px;
      height: 20px;
      background: red;
-     border-radius: 25%;
+     border-radius: 50%;
      position: absolute;
    }
    .heart::before{
@@ -132,7 +133,7 @@
      left: 0;
    }
     .heart::after{
-     left: 8px;
+     left: -8px;
      top: 0;
    }
     @keyframes float {
@@ -273,6 +274,7 @@
   </script>
 </body>
 </html>
+
 
 
 
