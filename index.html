@@ -122,25 +122,25 @@
    .heart::after{
      content: "";
      position: absolute;
-     width: 14px;
-     height: 14px;
+     width: 24px;
+     height: 24px;
      background: red;
      border-radius: 50%;
      position: absolute;
    }
    .heart::before{
-     top: -7px;
+     top: -12px;
      left: 0;
    }
     .heart::after{
-     left: -7px;
+     left: -12px;
      top: 0;
    }
     @keyframes float {
       from { transform: translateY(0) rotate(0); opacity: 1; }
       to { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
     }
-
+/*''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''*/
     .mini-heart {
       position: absolute;
       width: 20px;
@@ -148,8 +148,6 @@
       background: red;
       transform: rotate(45deg);
       pointer-events: none;
-      opacity: 0.85;
-      filter: blur(0.6px);
       z-index: 100;
     }
 
@@ -293,6 +291,7 @@
   </script>
 </body>
 </html>
+
 
 
 
