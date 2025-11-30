@@ -242,26 +242,12 @@
         option.classList.toggle('flipped');
         giftText.textContent = "Happy 2 Years Together 🤍";
 
-        // mini hearts
-        for(let i=0;i<10;i++){
-          const heart = document.createElement('div');
-          heart.classList.add('mini-heart');
-          document.body.appendChild(heart);
-          const rect = giftText.getBoundingClientRect();
-          heart.style.left = rect.left + rect.width/2 + (Math.random()*40-20) + "px";
-          heart.style.top = rect.top + "px";
-          const duration = 2000 + Math.random()*1000;
-          heart.style.transition = `all ${duration}ms ease-out`;
-          setTimeout(()=> {
-            heart.style.transform = `translateY(-100px) translateX(${Math.random()*60-30}px) scale(0.5)`;
-            heart.style.opacity = 0;
-          }, 50);
-          setTimeout(()=> heart.remove(), duration);
-        }
+       
       });
     });
   </script>
 </body>
 </html>
+
 
 
