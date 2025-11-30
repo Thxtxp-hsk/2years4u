@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -14,40 +14,7 @@
       text-align: center;
       overflow-x: hidden;
       overflow-y: auto;
-      cursor: none; /* Hide default cursor */
     }
-
-    /* ❤️ HEART CURSOR */
-    .heart-cursor {
-      position: fixed;
-      width: 22px;
-      height: 22px;
-      pointer-events: none;
-      transform: translate(-50%, -50%) rotate(45deg);
-      z-index: 99999;
-      transition: transform 0.1s ease-out;
-    }
-
-    .heart-cursor::before,
-    .heart-cursor::after {
-      content: "";
-      width: 22px;
-      height: 22px;
-      background: #ff4d6d;
-      border-radius: 50%;
-      position: absolute;
-    }
-
-    .heart-cursor::before {
-      top: -11px;
-      left: 0;
-    }
-
-    .heart-cursor::after {
-      left: -11px;
-      top: 0;
-    }
-
 
     .page {
       width: 100%;
@@ -72,6 +39,7 @@
       font-family: 'Sarabun', sans-serif;
     }
 
+    /* กระดาษจดโน้ต */
     .note {
       display: inline-block;
       background: #fff;
@@ -86,6 +54,7 @@
       line-height: 1.8;
     }
 
+    /* หน้า 3 ของขวัญ */
     .gift-grid {
       display: grid;
       grid-template-columns: repeat(2, 130px);
@@ -125,6 +94,7 @@
       transform: rotateY(180deg);
     }
 
+    /* Floating hearts */
     .hearts {
       position: relative;
       top: 0; left: 0;
@@ -161,11 +131,7 @@
     }
   </style>
 </head>
-
 <body>
-
-  <!-- ❤️ Heart Cursor -->
-  <div class="heart-cursor" id="cursor"></div>
 
   <!-- 🎵 ปุ่มเปิดเพลง -->
   <audio id="bgMusic" loop>
@@ -181,7 +147,7 @@
     <div class="hearts"></div>
   </section>
 
-  <!-- หน้า 2 -->
+  <!-- หน้า 2: Note -->
   <section id="page2" class="page hidden">
     <h1>My feelings 💌</h1>
     <div class="note">
@@ -199,7 +165,7 @@
     <button id="toPage3" class="next-btn">เลือกของขวัญเลยค้าบ</button>
   </section>
 
-  <!-- หน้า 3 -->
+  <!-- หน้า 3: Gift -->
   <section id="page3" class="page hidden">
     <h1>Choose your gift </h1>
     <div class="gift-grid">
@@ -224,26 +190,16 @@
   </section>
 
   <script>
-    // ❤️ HEART CURSOR SCRIPT
-    const cursor = document.getElementById("cursor");
-    document.addEventListener("mousemove", (e) => {
-      cursor.style.left = e.pageX + "px";
-      cursor.style.top = e.pageY + "px";
-      cursor.style.transform = "translate(-50%, -50%) rotate(45deg) scale(1.1)";
-      setTimeout(() => {
-        cursor.style.transform = "translate(-50%, -50%) rotate(45deg) scale(1)";
-      }, 100);
-    });
-
-    // 🎵 Music
+    // 🎵 เริ่มเพลงหลังจากแตะปุ่ม
     const music = document.getElementById("bgMusic");
     const startBtn = document.getElementById("startMusic");
+
     startBtn.addEventListener("click", () => {
       music.play();
-      startBtn.style.display = "none";
+      startBtn.style.display = "none"; // ซ่อนปุ่มหลังจากเริ่มเพลง
     });
 
-    // Floating hearts
+    // Floating hearts หน้าแรก
     const heartsContainer = document.querySelector('.hearts');
     function createHeart() {
       const heart = document.createElement('div');
@@ -255,30 +211,28 @@
     }
     setInterval(createHeart, 300);
 
-    // Page switching
+    // การเปลี่ยนหน้า
     const page1 = document.getElementById('page1');
     const page2 = document.getElementById('page2');
     const page3 = document.getElementById('page3');
-
     document.getElementById('toPage2').addEventListener('click', () => {
       page1.classList.add('hidden');
       page2.classList.remove('hidden');
     });
-
     document.getElementById('toPage3').addEventListener('click', () => {
       page2.classList.add('hidden');
       page3.classList.remove('hidden');
     });
 
-    // Gift flip
+    // Flip ของขวัญ
     const giftOptions = document.querySelectorAll('.gift-option');
     const giftText = document.getElementById('giftText');
-
     giftOptions.forEach(option => {
       option.addEventListener('click', () => {
         option.classList.toggle('flipped');
         giftText.textContent = "Happy 2 Years Together 🤍";
 
+        // mini hearts
         for(let i=0;i<10;i++){
           const heart = document.createElement('div');
           heart.classList.add('mini-heart');
